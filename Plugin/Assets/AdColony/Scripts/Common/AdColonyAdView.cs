@@ -70,9 +70,21 @@ namespace AdColony
             }
         }
 
-        public void destroyAdView() {
+        public void DestroyAdView() {
             Debug.Log("AdColony.AdColonyAdView.DestroyAdView called.");
             Ads.DestroyAdView(Id);
+        }
+
+        public void ShowAdView()
+        {
+            Debug.Log("AdColony.AdColonyAdView.show called.");
+            Ads.ShowAdView(Id);
+        }
+
+        public void HideAdView()
+        {
+            Debug.Log("AdColony.AdColonyAdView.hide called.");
+            Ads.HideAdView(Id);
         }
 
         private bool IsValid()

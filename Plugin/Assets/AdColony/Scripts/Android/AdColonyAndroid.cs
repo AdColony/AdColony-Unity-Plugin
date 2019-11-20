@@ -121,6 +121,18 @@ namespace AdColony {
             _pluginWrapper.CallStatic("destroyAdView", id);
         }
 
+        public void ShowAdView(string id)
+        {
+            Debug.Log("AdColony.Android.show called.");
+            _pluginWrapper.CallStatic("show", id);
+        }
+
+        public void HideAdView(string id)
+        {
+            Debug.Log("AdColony.Android.hide called.");
+            _pluginWrapper.CallStatic("hide", id);
+        }
+
         public void RegisterForCustomMessage(string type) {
             _pluginWrapper.CallStatic("registerForCustomMessage", type);
         }

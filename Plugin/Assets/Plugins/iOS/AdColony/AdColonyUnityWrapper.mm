@@ -139,6 +139,8 @@ NSString *getGUID() {
 // Methods
 - (void)requestAdViewInZone:(NSString *)zoneId withSize:(NSInteger)adSize location:(NSInteger)adLocation andOptions:(NSString *)adOptionsJson;
 - (void)destroyAdView;
+- (void)showAdView;
+- (void)hideAdView;
 
 @end
 
@@ -201,6 +203,18 @@ typedef enum : NSInteger {
         [self.adView destroy];
         self.adView = nil;
         [[AdcAdsUnityController sharedInstance].bannerAds removeObjectForKey:self.adID];
+    }
+}
+
+- (void)showAdView {
+    if (self.adView) {
+        [self.adView setHidden:false];
+    }
+}
+
+- (void)hideAdView {
+    if (self.adView) {
+        [self.adView setHidden:true];
     }
 }
 
@@ -447,6 +461,20 @@ extern "C" {
         AdcBannerAdManager *bannerAdManager = [AdcAdsUnityController sharedInstance].bannerAds[GetStringParamOrNil(adID)];
         if (bannerAdManager) {
             [bannerAdManager destroyAdView];
+        }
+    }
+
+    void _AdcShowAdView(const char *adID) {
+        AdcBannerAdManager *bannerAdManager = [AdcAdsUnityController sharedInstance].bannerAds[GetStringParamOrNil(adID)];
+        if (bannerAdManager) {
+            [bannerAdManager showAdView];
+        }
+    }
+
+    void _AdcHideAdView(const char *adID) {
+        AdcBannerAdManager *bannerAdManager = [AdcAdsUnityController sharedInstance].bannerAds[GetStringParamOrNil(adID)];
+        if (bannerAdManager) {
+            [bannerAdManager hideAdView];
         }
     }
     

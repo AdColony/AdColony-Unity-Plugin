@@ -22,6 +22,8 @@ namespace AdColony {
         [DllImport ("__Internal")] private static extern void _AdcDestroyInterstitialAd(string id); 
         [DllImport("__Internal")] private static extern void _AdcRequestAdView(string zoneId, AdSize adSize, AdPosition adPosition, string adOptions);
         [DllImport ("__Internal")] private static extern void _AdcDestroyAdView(string id); 
+        [DllImport("__Internal")] private static extern void _AdcShowAdView(string id);
+        [DllImport("__Internal")] private static extern void _AdcHideAdView(string id);
 
         public AdsIOS(string managerName) {
             _AdcSetManagerNameAds(managerName, Constants.AdapterVersion);
@@ -116,6 +118,17 @@ namespace AdColony {
         {
             Debug.Log("AdColony.AdColonyIOS.DestroyAdView called.");
             _AdcDestroyAdView(id);
+        }
+
+        public void ShowAdView(string id)
+        {
+            Debug.Log("AdColony.AdColonyIOS.show called.");
+            _AdcShowAdView(id);
+        }
+        public void HideAdView(string id)
+        {
+            Debug.Log("AdColony.AdColonyIOS.hide called.");
+            _AdcHideAdView(id);
         }
     }
 #endif

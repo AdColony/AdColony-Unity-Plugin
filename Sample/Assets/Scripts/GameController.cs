@@ -116,6 +116,8 @@ public class GameController : MonoBehaviour
             arrayList.Add(ad_);
             adView = ad_;
 
+            Invoke("HideAdView", 5.0f);
+            Invoke("ShowAdView", 10.0f);
         };
 
         AdColony.Ads.OnAdViewFailedToLoad += (AdColony.AdColonyAdView ad_) => {
@@ -249,7 +251,19 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	public void PerformAdColonyAction(Asteroid asteroid) {
+    void HideAdView()
+    {
+       //Do whatever you want to do after the set amount of time here
+       adView.HideAdView();
+    }
+
+    void ShowAdView()
+    {
+        //Do whatever you want to do after the set amount of time here
+        adView.ShowAdView();
+    }
+
+    public void PerformAdColonyAction(Asteroid asteroid) {
 		if (asteroid == asteroidConfigure) {
 			ConfigureAds();
 		} else if (asteroid == asteroidRequest) {
@@ -279,7 +293,7 @@ public class GameController : MonoBehaviour
                 //}
 
                 AdColony.AdColonyAdView adView = (AdColony.AdColonyAdView)arrayList[0];
-                adView.destroyAdView();
+                adView.DestroyAdView();
                 arrayList.Remove(adView);
                 if (arrayList.Count != 0)
                 {

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.content.Context;
 import android.app.Activity;
 import android.view.Gravity;
+import android.view.View;
 
 import com.unity3d.player.UnityPlayer;
 import com.adcolony.sdk.*;
@@ -380,14 +381,38 @@ public class UnityADCAds {
         AdColony.requestAdView(zoneId, adContainer, getAdSize(adSize), adOptions);
     }
 
+    public static void show(final String id) {
+        UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                UnityADCAdViewContainer adcAdViewContainer = getSharedInstance()._adViewContainers.get(id);
+                if (adcAdViewContainer!=null && adcAdViewContainer.ad!=null &&
+                        adcAdViewContainer.ad.get_ad()!= null) {
+                    adcAdViewContainer.ad.get_ad().setVisibility(View.VISIBLE);;
+                }
+            }
+        });
+    }
+
+    public static void hide(final String id) {
+        UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                UnityADCAdViewContainer adcAdViewContainer = getSharedInstance()._adViewContainers.get(id);
+                if (adcAdViewContainer!=null && adcAdViewContainer.ad!=null &&
+                        adcAdViewContainer.ad.get_ad()!= null) {
+                    adcAdViewContainer.ad.get_ad().setVisibility(View.GONE);;
+                }
+            }
+        });
+    }
+
     public static void destroyAdView(String id) {
         destroyNativeAdView(id);
-
     }
 
     private static void destroyNativeAdView(String id) {
         UnityADCAdViewContainer adcAdViewContainer = getSharedInstance()._adViewContainers.get(id);
-        if (adcAdViewContainer!=null && adcAdViewContainer.ad!=null) {
+        if (adcAdViewContainer!=null && adcAdViewContainer.ad!=null &&
+                adcAdViewContainer.ad.get_ad() != null) {
             adcAdViewContainer.ad.get_ad().destroy();
             getSharedInstance()._adViewContainers.remove(id);
         }
@@ -395,8 +420,6 @@ public class UnityADCAds {
 
     private static AdColonyAdSize getAdSize(int adSize) {
         switch (adSize) {
-            case 1:
-                return AdColonyAdSize.BANNER;
             case 2:
                 return AdColonyAdSize.MEDIUM_RECTANGLE;
             case 3:

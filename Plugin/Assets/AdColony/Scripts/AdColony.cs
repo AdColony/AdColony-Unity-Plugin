@@ -1197,6 +1197,18 @@ namespace AdColony
             SharedInstance.DestroyAdView(id);
         }
 
+        internal static void ShowAdView(string id)
+        {
+            Debug.Log("AdColony.Wrapper.show called.");
+            SharedInstance.ShowAdView(id);
+        }
+
+        internal static void HideAdView(string id)
+        {
+            Debug.Log("AdColony.Wrapper.hide called.");
+            SharedInstance.HideAdView(id);
+        }
+
         //------------------------------End Banner-------------------------------------------------------------------------
         #endregion
 
@@ -1237,5 +1249,7 @@ namespace AdColony
         void CancelAd(InterstitialAd ad);
         void DestroyAd(string id);
         void DestroyAdView(string id);
+        void ShowAdView(string id);
+        void HideAdView(string id);
     }
 }
