@@ -116,6 +116,9 @@ public class GameController : MonoBehaviour
             arrayList.Add(ad_);
             adView = ad_;
 
+            // Show or hide the ad view(this is optional; the banner is shown by default)
+            /* Setting 2 timers of 5 and 10 seconds, after 5 sec calling 
+             * the ad view's hide method that is defined below and after 10 sec calling the ad view's show method that is defined below.*/
             Invoke("HideAdView", 5.0f);
             Invoke("ShowAdView", 10.0f);
         };
@@ -251,15 +254,16 @@ public class GameController : MonoBehaviour
 		}
 	}
 
+    // Show or hide the ad view(this is optional; the banner is shown by default)
     void HideAdView()
     {
-       //Do whatever you want to do after the set amount of time here
+       //Hide the ad view.
        adView.HideAdView();
     }
 
     void ShowAdView()
     {
-        //Do whatever you want to do after the set amount of time here
+        //Show the ad view.
         adView.ShowAdView();
     }
 
@@ -274,24 +278,11 @@ public class GameController : MonoBehaviour
         else if (asteroid == asteroidAdViewRequest)
         {
             RequestBannerAd();
-            //RequestBannerAd2();
             asteroidAdViewRequest.Show();
         }
         else if (asteroid == asteroidAdViewDestroy)
         {
            if(arrayList.Count != 0) {
-
-                //foreach (AdColony.AdColonyAdView adView in arrayList)
-                //{
-                //    if (adView != null && adView.adPosition == AdColony.AdPosition.Top)
-                //    {
-                //        Debug.Log("**** destroyAdViewd AdPosition "+ adView.adPosition);
-                //        adView.destroyAdView();
-                //        arrayList.Remove(adView);
-                //        break;
-                //    }
-                //}
-
                 AdColony.AdColonyAdView adView = (AdColony.AdColonyAdView)arrayList[0];
                 adView.DestroyAdView();
                 arrayList.Remove(adView);
@@ -301,12 +292,6 @@ public class GameController : MonoBehaviour
                 }
 
             }
-            //else { asteroidAdViewRequest.Show(); }
-
-            //adView.destroyAdView();
-            //asteroidAdViewRequest.Show();
-
-
         }
     }
 

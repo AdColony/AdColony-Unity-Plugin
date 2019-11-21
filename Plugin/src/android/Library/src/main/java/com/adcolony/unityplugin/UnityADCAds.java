@@ -385,7 +385,7 @@ public class UnityADCAds {
         UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
             public void run() {
                 UnityADCAdViewContainer adcAdViewContainer = getSharedInstance()._adViewContainers.get(id);
-                if (adcAdViewContainer!=null && adcAdViewContainer.ad!=null &&
+                if (adcAdViewContainer != null && adcAdViewContainer.ad != null &&
                         adcAdViewContainer.ad.get_ad()!= null) {
                     adcAdViewContainer.ad.get_ad().setVisibility(View.VISIBLE);;
                 }
@@ -397,7 +397,7 @@ public class UnityADCAds {
         UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
             public void run() {
                 UnityADCAdViewContainer adcAdViewContainer = getSharedInstance()._adViewContainers.get(id);
-                if (adcAdViewContainer!=null && adcAdViewContainer.ad!=null &&
+                if (adcAdViewContainer != null && adcAdViewContainer.ad != null &&
                         adcAdViewContainer.ad.get_ad()!= null) {
                     adcAdViewContainer.ad.get_ad().setVisibility(View.GONE);;
                 }
@@ -411,7 +411,7 @@ public class UnityADCAds {
 
     private static void destroyNativeAdView(String id) {
         UnityADCAdViewContainer adcAdViewContainer = getSharedInstance()._adViewContainers.get(id);
-        if (adcAdViewContainer!=null && adcAdViewContainer.ad!=null &&
+        if (adcAdViewContainer != null && adcAdViewContainer.ad != null &&
                 adcAdViewContainer.ad.get_ad() != null) {
             adcAdViewContainer.ad.get_ad().destroy();
             getSharedInstance()._adViewContainers.remove(id);

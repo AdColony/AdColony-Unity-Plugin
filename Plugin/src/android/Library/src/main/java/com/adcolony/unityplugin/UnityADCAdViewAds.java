@@ -44,12 +44,4 @@ public class UnityADCAdViewAds {
     public AdColonyAdView get_ad() {
         return _ad;
     }
-
-    /*  public boolean show() {
-        return _ad.show();
-    }
-79
-    public void cancel() {
-        _ad.cancel();
-    }*/
 }
