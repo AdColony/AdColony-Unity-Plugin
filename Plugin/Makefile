@@ -1,5 +1,5 @@
-IOS_REPO_NAME := AdColony-iOS-SDK-3
-ANDROID_REPO_NAME := AdColony-Android-SDK-3
+IOS_REPO_NAME := AdColony-iOS-SDK
+ANDROID_REPO_NAME := AdColony-Android-SDK
 UNITY_PLUGIN_DIR := $(shell pwd)
 SDK_DIR := $(UNITY_PLUGIN_DIR)/src/sdks
 IOS_DIR := $(SDK_DIR)/$(IOS_REPO_NAME)
